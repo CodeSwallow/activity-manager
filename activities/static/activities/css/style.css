@@ -104,7 +104,7 @@ li {
 
 .nav-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     width: 20%;
 }
 
@@ -115,6 +115,10 @@ li {
 
 .nav-links > li:hover {
     transform: scale(1.2);
+}
+
+.menu-icon {
+    display: none;
 }
 
 /* MAIN STYLING */
@@ -129,4 +133,41 @@ footer {
     background-color: var(--gray-100);
     padding: 0.5rem 4rem;
     text-align: center;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 1.5rem 4rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .menu-icon p {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .navbar {
+        padding: 1.5rem 2rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .menu-icon p {
+        font-size: 20px;
+    }
 }
