@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", default='fake-django-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['activity-env.eba-ejwmxefy.us-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['activity-env.eba-fpm2q3nn.us-east-1.elasticbeanstalk.com']
 
 
 # Application definition
