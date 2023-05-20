@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Activity Manager">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     {% block css %}
     {% endblock %}
 </head>
 <body>
+<div class="box">
+    {% block nav %}{% endblock %}
+
     <header>
-        {% block header %}
-        <h1>Activity Manager</h1>
-        {% endblock %}
+        {% block header %}{% endblock %}
     </header>
 
     <main>
@@ -18,9 +22,10 @@
 
     <footer>
         {% block footer %}
-        <p>&copy; 2023 Activity Manager</p>
+            <p>&copy; 2023 Activity Manager</p>
         {% endblock %}
     </footer>
+</div>
 
 {#    {% block js %}#}
 {#    <script src="{% static 'js/script.js' %}"></script>#}
