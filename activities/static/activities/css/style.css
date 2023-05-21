@@ -316,6 +316,298 @@ footer {
     margin: 0.5rem 0;
 }
 
+/* PROFILE SIDEBAR STYLING */
+.profile-container {
+    display: flex;
+    height: 100%;
+    flex: 1 1 auto;
+}
+
+.sidebar {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    background: var(--purple-200);
+}
+
+.opened {
+    flex: 0 1 auto;
+    text-align: start;
+    align-items: flex-start;
+    padding: 2rem 0 2rem 1rem;
+}
+
+.closed {
+    flex: 0 1 auto;
+    text-align: center;
+    align-items: center;
+}
+
+.opened .sidebar-main-options {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
+
+.opened .logo-link {
+    margin-left: 0.1rem;
+}
+
+.logo-link > .logo {
+    font-size: 1rem;
+    margin: 0 0 2rem 1rem;
+    transition: 0.2s ease-in;
+}
+
+.closed .logo {
+    margin: 1rem 1rem 2rem 1rem;
+}
+
+.logo-link > .logo:hover {
+    transform: scale(1.1);
+}
+
+.opened .sidebar-links > li {
+    width: 200px;
+    padding: 1rem 3rem 1rem 0;
+    transition: .2s ease-in;
+    position: relative;
+}
+
+.opened .sidebar-links > li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    transition: .2s ease;
+}
+
+.opened .sidebar-links > li:hover::before {
+    background-color: var(--purple-900);
+}
+
+.opened .sidebar-links > li:hover {
+    transform: scale(1.1);
+    translate: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    background-color: var(--gray-100);
+}
+
+.opened a > i {
+    color: var(--purple-900);
+    margin: 0 0.5rem 0 1rem;
+}
+
+.profile-content {
+    display: flex;
+    flex-flow: column;
+    padding: 1rem 3rem;
+    text-align: start;
+    background-color: var(--gray-100);
+    flex: 1 1 auto;
+}
+
+.closed i + span {
+    font-size: 0;
+}
+
+.closed i {
+    font-size: 1.5rem;
+    color: var(--purple-900);
+}
+
+.closed li {
+    margin: 1.5rem 0;
+    transition: 0.2s ease;
+}
+
+.closed li:hover {
+    transform: scale(1.5);
+}
+
+.closed .sidebar-main-options {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+/*PROFILE SEARCH BAR STYLING */
+.search-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+    flex: 0 1 auto;
+}
+
+.form-container {
+    flex-grow: 1;
+}
+
+.searchbar {
+    display: flex;
+    gap: 1rem;
+}
+
+.searchbar label {
+    flex-grow: 1;
+}
+
+.searchbar input {
+    font-size: 1rem;
+    padding: 1rem 1rem;
+    border: thin solid var(--gray-400);
+    color: var(--gray-700);
+    border-radius: 0.5rem;
+    background-color: var(--gray-100);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.searchbar button {
+    font-size: 1.3rem;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.searchbar i {
+    color: var(--gray-900);
+    transition: .2s ease;
+}
+
+.searchbar i:hover {
+    transform: scale(1.3);
+}
+
+.add-task-btn {
+    font-size: 1rem;
+    padding: 1rem 1rem;
+    border: none;
+    color: var(--white);
+    border-radius: 0.5rem;
+    background: linear-gradient(to right, var(--purple-600), var(--blue-500));
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    transition: .2s ease;
+}
+
+.add-task-btn:hover {
+    transform: scale(1.1);
+}
+
+.add-task-btn i {
+    margin-right: 0.5rem;
+}
+
+.avatar-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar-container i {
+    font-size: 1.5rem;
+    color: var(--gray-900);
+    transition: .2s ease;
+}
+
+.avatar-container span {
+    font-size: 1.1rem;
+}
+
+/* PROFILE DASHBOARD STYLING */
+.dashboard-container {
+    margin: 2rem 0 1rem;
+    padding: 1rem;
+    flex: 1 1 auto;
+    border-radius: 0.5rem;
+    background-color: var(--purple-100);
+    opacity: 0.8;
+    background-image: radial-gradient(var(--purple-900) 0.5px, transparent 0.5px), radial-gradient(var(--purple-700) 0.5px, var(--purple-100) 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/* PROFILE TASKS CARDS STYLING */
+.todo {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+}
+
+.latest {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+}
+
+.statistics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.task-card {
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--gray-100);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: .2s ease;
+}
+
+.task-card-header {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.task-card-body {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.task-card-footer {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.statistic-card {
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--gray-100);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: .2s ease;
+}
+
 /* MEDIA QUERIES */
 @media screen and (max-width: 1200px) {
     .login-container {
