@@ -7,3 +7,10 @@ class HomeView(View):
 
     def get(self, request):
         return render(request, self.template_name)
+
+
+class ProfileView(View):
+    template_name = 'activities/profile.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
