@@ -226,7 +226,7 @@ footer {
     text-align: center;
 }
 
-/* LOGIN PAGE STYLING */
+/* LOGIN AND SIGNUP PAGE STYLING */
 
 .login-container {
     display: flex;
@@ -312,9 +312,12 @@ footer {
     width: 30%;
 }
 
+.error-item {
+    margin: 0.5rem 0;
+}
+
 /* MEDIA QUERIES */
 @media screen and (max-width: 1200px) {
-
     .login-container {
         padding: 5rem 5rem;
     }
@@ -324,6 +327,10 @@ footer {
     }
 
     .signin-form {
+        width: 40%;
+    }
+
+    .form-errors {
         width: 40%;
     }
 }
@@ -342,6 +349,10 @@ footer {
     }
 
     .signin-form {
+        width: 50%;
+    }
+
+    .form-errors {
         width: 50%;
     }
 }
@@ -377,6 +388,10 @@ footer {
     }
 
     .signin-form {
+        width: 70%;
+    }
+
+    .form-errors {
         width: 70%;
     }
 }
