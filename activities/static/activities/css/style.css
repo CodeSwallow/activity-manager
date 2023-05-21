@@ -44,6 +44,24 @@
     --orange-700: #c2410c;
     --orange-800: #9a3412;
     --orange-900: #7c2d12;
+    --pink-100: #fce7f3;
+    --pink-200: #fbcfe8;
+    --pink-300: #f9a8d4;
+    --pink-400: #f472b6;
+    --pink-500: #ec4899;
+    --pink-600: #db2777;
+    --pink-700: #be185d;
+    --pink-800: #9d174d;
+    --pink-900: #831843;
+    --purple-100: #f3e8ff;
+    --purple-200: #e9d5ff;
+    --purple-300: #d8b4fe;
+    --purple-400: #c084fc;
+    --purple-500: #a855f7;
+    --purple-600: #9333ea;
+    --purple-700: #7e22ce;
+    --purple-800: #6b21a8;
+    --purple-900: #581c87;
 }
 
 @font-face {
@@ -79,6 +97,7 @@ li {
     display: flex;
     flex-flow: column;
     height: 100%;
+    background: linear-gradient(45deg, var(--gray-100), var(--purple-100), var(--purple-100));
 }
 
 /* NAVBAR STYLING */
@@ -87,7 +106,6 @@ li {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 8rem;
-    background-color: var(--gray-100);
     flex: 0 1 auto;
 }
 
@@ -97,7 +115,7 @@ li {
 }
 
 .gradient-text {
-    background: linear-gradient(to right, var(--blue-500), var(--red-500));
+    background: linear-gradient(to right, var(--blue-500), var(--purple-500));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -124,13 +142,11 @@ li {
 /* MAIN STYLING */
 main {
     flex: 1 1 auto;
-    background-color: var(--gray-100);
 }
 
 /* FOOTER STYLING */
 footer {
     flex: 0 1 auto;
-    background-color: var(--gray-100);
     padding: 0.5rem 4rem;
     text-align: center;
 }
@@ -147,10 +163,15 @@ footer {
 
     .menu-icon {
         display: block;
+        transition: .2s ease;
     }
 
-    .menu-icon p {
-        font-size: 20px;
+    .menu-icon:hover {
+        transform: scale(1.2);
+    }
+
+    .menu-icon i {
+        font-size: 1.4rem;
     }
 }
 
