@@ -9,8 +9,10 @@
 
 {% block content %}
     <div class="login-container">
-        <div class="logo">AM</div>
-        <h1 class="login-message">Login to your account</h1>
+        <div class="logo">
+            <a href="/">AM</a>
+        </div>
+        <h1 class="login-message">Log in to your account</h1>
 
         {% if form.errors %}
             <p class="form-errors">Your username and password didn't match. Please try again.</p>
