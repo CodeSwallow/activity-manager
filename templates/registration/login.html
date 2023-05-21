@@ -2,13 +2,46 @@
 {% load static %}
 
 {% block css %}
-      <link rel="stylesheet" href={% static 'activities/css/style.css' %}>
+    <link rel="stylesheet" href={% static 'activities/css/style.css' %}>
 {% endblock %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
-    <div class="main-container">
-        <h1 class="main-message">Login</h1>
+    <div class="login-container">
+        <div class="logo">AM</div>
+        <h1 class="login-message">Login to your account</h1>
+
+        {% if form.errors %}
+            <p class="form-errors">Your username and password didn't match. Please try again.</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p class="form-errors">Your account doesn't have access to this page. To proceed,
+                    please log in with an account that has access.</p>
+            {% else %}
+                <p class="form-errors">Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
+
+        <form class="signin-form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <div class="signin-field">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="signin-field">
+                <div class="passwords">
+                    {{ form.password.label_tag }}
+                    <p class="link"><a href="#">Forgot password?</a></p>
+                </div>
+                {{ form.password }}
+            </div>
+            <button class="signin-btn" type="submit">Sign in</button>
+        </form>
+        <p class="gray-700">Don't have an account? <a class="link" href="{% url 'accounts:signup' %}">Create one</a></p>
     </div>
+
 {% endblock %}

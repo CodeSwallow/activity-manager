@@ -1,5 +1,6 @@
 :root {
     --white: #ffffff;
+    --black: #000000;
     --blue-100: #dbeafe;
     --blue-200: #bfdbfe;
     --blue-300: #93c5fd;
@@ -104,6 +105,10 @@ li {
     height: 100%;
 }
 
+.gray-700 {
+    color: var(--gray-700);
+}
+
 /* NAVBAR STYLING */
 .navbar {
     display: flex;
@@ -116,10 +121,38 @@ li {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.5rem;
+    background-color: var(--gray-900);
+    color: var(--purple-100);
+    position: relative;
+    transform-style: preserve-3d;
+    transform: perspective(5000px) rotateY(20deg) rotateX(20deg);
+}
+
+.logo::before,
+.logo::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+}
+
+.logo::before {
+    inset: 0.2rem;
+    background: var(--black);
+    transform: translateZ(-0.9rem);
+    filter: blur(0.5rem);
+    opacity: 0.5;
+}
+
+.logo::after {
+    inset: -0.2rem;
+    background: linear-gradient(45deg, var(--purple-500), var(--blue-500));
+    transform: translateZ(-1rem);
 }
 
 .gradient-text {
-    background: linear-gradient(to right, var(--blue-500), var(--purple-500));
+    background: linear-gradient(to right, var(--blue-500), var(--red-500));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -131,7 +164,7 @@ li {
 }
 
 .nav-links > li {
-    padding: 0 1rem;
+    padding: 0 0 0 1rem;
     transition: .2s ease;
 }
 
@@ -193,7 +226,126 @@ footer {
     text-align: center;
 }
 
+/* LOGIN PAGE STYLING */
+
+.login-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem 10rem;
+}
+
+.login-message {
+    text-align: center;
+    margin: 3rem 25rem;
+    font-size: 1.5rem;
+    color: var(--gray-900)
+}
+
+.signin-form {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.signin-field {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.signin-field > label {
+    align-self: start;
+    color: var(--gray-700);
+}
+
+.signin-field > input {
+    align-self: center;
+    padding: 1rem 1rem;
+    border: thin solid var(--gray-400);
+    color: var(--gray-700);
+    border-radius: 0.5rem;
+    background-color: var(--gray-100);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    margin: 0.5rem 0 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.passwords {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.link {
+    color: var(--purple-900);
+}
+
+.signin-btn {
+    padding: 1rem 1rem;
+    border: thin solid var(--purple-400);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    background-color: var(--purple-200);
+    color: var(--gray-900);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: .2s ease;
+    margin: 0.5rem 0 2rem;
+    width: 100%;
+}
+
+.signin-btn:hover {
+    background-color: var(--purple-100);
+}
+
+.form-errors {
+    color: var(--red-500);
+    font-size: 0.8rem;
+    margin: 0.5rem 0 2rem;
+    width: 30%;
+}
+
 /* MEDIA QUERIES */
+@media screen and (max-width: 1200px) {
+
+    .login-container {
+        padding: 5rem 5rem;
+    }
+
+    .login-message {
+        margin: 3rem 5rem;
+    }
+
+    .signin-form {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .navbar {
+        padding: 1.5rem 4rem;
+    }
+
+    .login-container {
+        padding: 5rem 5rem;
+    }
+
+    .login-message {
+        margin: 3rem 5rem;
+    }
+
+    .signin-form {
+        width: 50%;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .navbar {
         padding: 1.5rem 4rem;
@@ -215,6 +367,18 @@ footer {
     .menu-icon i {
         font-size: 1.4rem;
     }
+
+    .login-container {
+        padding: 5rem 5rem;
+    }
+
+    .login-message {
+        margin: 3rem 5rem;
+    }
+
+    .signin-form {
+        width: 70%;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -232,5 +396,17 @@ footer {
 
     .menu-icon p {
         font-size: 20px;
+    }
+
+    .login-container {
+        padding: 5rem 1rem;
+    }
+
+    .login-message {
+        margin: 3rem 2rem;
+    }
+
+    .signin-form {
+        width: 90%;
     }
 }
