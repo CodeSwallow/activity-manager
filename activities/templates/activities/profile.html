@@ -9,121 +9,123 @@
 
 {% block content %}
     <div class="profile-container">
-    {% include 'activities/sidebar.html' %}
-    <div class="profile-content">
-        {% include 'activities/searchbar.html' %}
-        <div class="dashboard-container">
-            <div class="todo">
-                {% for task in tasks %}
+        {% include 'activities/sidebar.html' %}
+        <div class="profile-content">
+            {% include 'activities/searchbar.html' %}
+            <div class="dashboard-container">
+                <div class="todo">
+                    {% for task in tasks %}
+                        <a href="{{ task.get_absolute_url }}">
+                            <div class="task-card">
+                                <div class="task-card-header">
+                                    <span>{{ task.title }}</span>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                                <div class="task-card-body">
+                                    <span>{{ task.description }}</span>
+                                    <div class="task-card-progress">
+                                        <div class="task-card-progress-bar"></div>
+                                        <span>{{ task.user }}</span>
+                                    </div>
+                                </div>
+                                <div class="task-card-footer">
+                                    <span>{{ task.created }}</span>
+                                    <span>{{ task.completed }}</span>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+                <div class="latest">
                     <div class="task-card">
                         <div class="task-card-header">
-                            <span>{{ task.title }}</span>
+                            <span>Task Name</span>
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                         <div class="task-card-body">
-                            <span>{{ task.description }}</span>
+                            <span>Task Description</span>
                             <div class="task-card-progress">
                                 <div class="task-card-progress-bar"></div>
-                                <span>{{ task.user }}</span>
+                                <span>Task Progress</span>
                             </div>
                         </div>
                         <div class="task-card-footer">
-                            <span>{{ task.created }}</span>
-                            <span>{{ task.completed }}</span>
+                            <span>Task Deadline</span>
+                            <span>Task Status</span>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-            <div class="latest">
-                <div class="task-card">
-                    <div class="task-card-header">
-                        <span>Task Name</span>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="task-card-body">
-                        <span>Task Description</span>
-                        <div class="task-card-progress">
-                            <div class="task-card-progress-bar"></div>
-                            <span>Task Progress</span>
-                        </div>
-                    </div>
-                    <div class="task-card-footer">
-                        <span>Task Deadline</span>
-                        <span>Task Status</span>
-                    </div>
-                </div>
 
-            </div>
-            <div class="statistics">
-                <div class="statistic-card">
-                    <div class="statistic-card-header">
-                        <span>Statistic Name</span>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="statistic-card-body">
-                        <span>Statistic Description</span>
-                        <div class="statistic-card-progress">
-                            <div class="statistic-card-progress-bar"></div>
-                            <span>Statistic Progress</span>
+                </div>
+                <div class="statistics">
+                    <div class="statistic-card">
+                        <div class="statistic-card-header">
+                            <span>Statistic Name</span>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                        <div class="statistic-card-body">
+                            <span>Statistic Description</span>
+                            <div class="statistic-card-progress">
+                                <div class="statistic-card-progress-bar"></div>
+                                <span>Statistic Progress</span>
+                            </div>
+                        </div>
+                        <div class="statistic-card-footer">
+                            <span>Statistic Deadline</span>
+                            <span>Statistic Status</span>
                         </div>
                     </div>
-                    <div class="statistic-card-footer">
-                        <span>Statistic Deadline</span>
-                        <span>Statistic Status</span>
-                    </div>
-                </div>
-                <div class="statistic-card">
-                    <div class="statistic-card-header">
-                        <span>Statistic Name</span>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="statistic-card-body">
-                        <span>Statistic Description</span>
-                        <div class="statistic-card-progress">
-                            <div class="statistic-card-progress-bar"></div>
-                            <span>Statistic Progress</span>
+                    <div class="statistic-card">
+                        <div class="statistic-card-header">
+                            <span>Statistic Name</span>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                        <div class="statistic-card-body">
+                            <span>Statistic Description</span>
+                            <div class="statistic-card-progress">
+                                <div class="statistic-card-progress-bar"></div>
+                                <span>Statistic Progress</span>
+                            </div>
+                        </div>
+                        <div class="statistic-card-footer">
+                            <span>Statistic Deadline</span>
+                            <span>Statistic Status</span>
                         </div>
                     </div>
-                    <div class="statistic-card-footer">
-                        <span>Statistic Deadline</span>
-                        <span>Statistic Status</span>
-                    </div>
-                </div>
-                <div class="statistic-card">
-                    <div class="statistic-card-header">
-                        <span>Statistic Name</span>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="statistic-card-body">
-                        <span>Statistic Description</span>
-                        <div class="statistic-card-progress">
-                            <div class="statistic-card-progress-bar"></div>
-                            <span>Statistic Progress</span>
+                    <div class="statistic-card">
+                        <div class="statistic-card-header">
+                            <span>Statistic Name</span>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                        <div class="statistic-card-body">
+                            <span>Statistic Description</span>
+                            <div class="statistic-card-progress">
+                                <div class="statistic-card-progress-bar"></div>
+                                <span>Statistic Progress</span>
+                            </div>
+                        </div>
+                        <div class="statistic-card-footer">
+                            <span>Statistic Deadline</span>
+                            <span>Statistic Status</span>
                         </div>
                     </div>
-                    <div class="statistic-card-footer">
-                        <span>Statistic Deadline</span>
-                        <span>Statistic Status</span>
-                    </div>
-                </div>
-                <div class="statistic-card">
-                    <div class="statistic-card-header">
-                        <span>Statistic Name</span>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="statistic-card-body">
-                        <span>Statistic Description</span>
-                        <div class="statistic-card-progress">
-                            <div class="statistic-card-progress-bar"></div>
-                            <span>Statistic Progress</span>
+                    <div class="statistic-card">
+                        <div class="statistic-card-header">
+                            <span>Statistic Name</span>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                        <div class="statistic-card-body">
+                            <span>Statistic Description</span>
+                            <div class="statistic-card-progress">
+                                <div class="statistic-card-progress-bar"></div>
+                                <span>Statistic Progress</span>
+                            </div>
+                        </div>
+                        <div class="statistic-card-footer">
+                            <span>Statistic Deadline</span>
+                            <span>Statistic Status</span>
                         </div>
                     </div>
-                    <div class="statistic-card-footer">
-                        <span>Statistic Deadline</span>
-                        <span>Statistic Status</span>
-                    </div>
                 </div>
-            </div>
                 <div class="teams">
 
                 </div>
