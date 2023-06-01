@@ -41,7 +41,7 @@ class TaskListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user)
 
-    
+
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
     template_name = 'activities/task_detail.html'
