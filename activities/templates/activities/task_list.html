@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href={% static 'activities/css/style.css' %}>
+{% endblock %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        {% include 'activities/sidebar.html' %}
+        <div class="profile-content">
+            {% include 'activities/searchbar.html' %}
+            <div class="dashboard-container">
+                <div class="todo">
+                    {% for task in tasks %}
+                        <div class="task-card">
+                            <div class="task-card-header">
+                                <span>{{ task.title }}</span>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                            <div class="task-card-body">
+                                <span>{{ task.description }}</span>
+                                <div class="task-card-progress">
+                                    <div class="task-card-progress-bar"></div>
+                                    <span>{{ task.user }}</span>
+                                </div>
+                            </div>
+                            <div class="task-card-footer">
+                                <span>{{ task.created }}</span>
+                                <span>{{ task.completed }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src={% static 'activities/js/profile.js' %}></script>
+{% endblock %}
+```
