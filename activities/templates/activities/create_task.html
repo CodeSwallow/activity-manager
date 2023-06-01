@@ -12,7 +12,11 @@
         {% include 'activities/sidebar.html' %}
         <div class="profile-content">
             {% include 'activities/searchbar.html' %}
-            <h1>Create Activity</h1>
+            <h1>Create Task</h1>
+            <form method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Save">
+            </form>
         </div>
     </div>
 {% endblock %}
