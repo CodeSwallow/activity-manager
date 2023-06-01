@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django.views.generic.edit import CreateView
 
 
 class HomeView(View):
@@ -14,3 +15,7 @@ class ProfileView(View):
 
     def get(self, request):
         return render(request, self.template_name)
+
+
+class CreateTaskView(CreateView):
+    template_name = 'activities/create_task.html'
