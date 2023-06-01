@@ -14,57 +14,25 @@
         {% include 'activities/searchbar.html' %}
         <div class="dashboard-container">
             <div class="todo">
-                <div class="task-card">
-                    <div class="task-card-header">
-                        <span>Task Name</span>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="task-card-body">
-                        <span>Task Description</span>
-                        <div class="task-card-progress">
-                            <div class="task-card-progress-bar"></div>
-                            <span>Task Progress</span>
+                {% for task in tasks %}
+                    <div class="task-card">
+                        <div class="task-card-header">
+                            <span>{{ task.title }}</span>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                        <div class="task-card-body">
+                            <span>{{ task.description }}</span>
+                            <div class="task-card-progress">
+                                <div class="task-card-progress-bar"></div>
+                                <span>{{ task.user }}</span>
+                            </div>
+                        </div>
+                        <div class="task-card-footer">
+                            <span>{{ task.created }}</span>
+                            <span>{{ task.completed }}</span>
                         </div>
                     </div>
-                    <div class="task-card-footer">
-                        <span>Task Deadline</span>
-                        <span>Task Status</span>
-                    </div>
-                </div>
-                <div class="task-card">
-                    <div class="task-card-header">
-                        <span>Task Name</span>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="task-card-body">
-                        <span>Task Description</span>
-                        <div class="task-card-progress">
-                            <div class="task-card-progress-bar"></div>
-                            <span>Task Progress</span>
-                        </div>
-                    </div>
-                    <div class="task-card-footer">
-                        <span>Task Deadline</span>
-                        <span>Task Status</span>
-                    </div>
-                </div>
-                <div class="task-card">
-                    <div class="task-card-header">
-                        <span>Task Name</span>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                    <div class="task-card-body">
-                        <span>Task Description</span>
-                        <div class="task-card-progress">
-                            <div class="task-card-progress-bar"></div>
-                            <span>Task Progress</span>
-                        </div>
-                    </div>
-                    <div class="task-card-footer">
-                        <span>Task Deadline</span>
-                        <span>Task Status</span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="latest">
                 <div class="task-card">
