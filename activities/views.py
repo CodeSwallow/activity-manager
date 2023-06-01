@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -37,6 +37,15 @@ class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'activities/task_list.html.html'
     context_object_name = 'tasks'
+
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
+
+    
+class TaskDetailView(LoginRequiredMixin, DetailView):
+    model = Task
+    template_name = 'activities/task_detail.html'
+    context_object_name = 'task'
 
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user)
