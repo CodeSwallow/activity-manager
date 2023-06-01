@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.shortcuts import reverse
 
 
 class Task(models.Model):
@@ -8,6 +9,9 @@ class Task(models.Model):
     description = models.TextField()
     completed = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+
+    def get_absolute_url(self):
+        return reverse('activities:task_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title
