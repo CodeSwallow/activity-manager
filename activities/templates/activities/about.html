@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+      <link rel="stylesheet" href={% static 'activities/css/style.css' %}>
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block nav %}
+    {% include 'activities/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h1 class="main-message">About page!</h1>
+        <p>Eventually I'll think of something interesting to write here!.</p>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'activities/footer.html' %}
+{% endblock %}
+```
