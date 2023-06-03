@@ -562,9 +562,9 @@ footer {
 
 .task-card {
     display: flex;
-    flex-flow: column;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
+    gap: 0.8rem;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: var(--gray-100);
@@ -572,28 +572,42 @@ footer {
     transition: .2s ease;
 }
 
-.task-card-header {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+.task-card:hover {
+    transform: scale(1.02);
 }
 
-.task-card-body {
+.task-title {
+    flex: 1 1 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.task-description {
+    flex: 1 1 0;
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    justify-content: center;
+    align-items: start;
+    font-size: 0.9rem;
+    color: var(--gray-500);
 }
 
-.task-card-footer {
+.task-progress {
+    flex: 0 1 0;
     display: flex;
-    flex-flow: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 100%;
+    font-size: 0.9rem;
+    border: thin solid;
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+
+.task-options {
+    flex: 0 1 0;
+    display: flex;
+    justify-content: end;
 }
 
 .statistic-card {
