@@ -14,7 +14,7 @@ class HomeView(View):
         return render(request, self.template_name)
 
 
-class ProfileView(View):
+class ProfileView(LoginRequiredMixin, View):
     template_name = 'activities/profile.html'
 
     def get(self, request):
