@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block css %}
+    <link rel="stylesheet" href={% static 'activities/css/style.css' %}>
+{% endblock %}
+
+{% block title %}Activities List{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        {% include 'activities/sidebar.html' %}
+        <div class="profile-content">
+            {% include 'activities/searchbar.html' %}
+            <div class="dashboard-container">
+                <div class="team">
+                    <h1>Teams Detail View</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src={% static 'activities/js/profile.js' %}></script>
+{% endblock %}
+```
