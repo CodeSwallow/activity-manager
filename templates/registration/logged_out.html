@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href={% static 'activities/css/style.css' %}>
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="login-container">
+        <div class="logo">
+            <a href="/">AM</a>
+        </div>
+        <h1 class="login-message">Logged out successfully</h1>
+
+        <div class="main-button-group">
+            <a href="{% url 'activities:home' %}" class="btn btn-primary">Main page</a>
+            <a href="{% url 'activities:profile' %}" class="btn btn-primary">Log back in</a>
+        </div>
+
+{% endblock %}
