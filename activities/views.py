@@ -67,3 +67,17 @@ class TeamDetailView(DetailView):
 
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user)  # TODO: change to Team.objects.filter() when created
+
+
+class CalendarView(View):  # TODO: currently a placeholder, will be implemented later
+    template_name = 'activities/calendar.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+
+class SettingsView(View):  # TODO: currently a placeholder, will be implemented later
+    template_name = 'activities/settings.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
