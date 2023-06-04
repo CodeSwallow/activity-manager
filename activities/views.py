@@ -49,3 +49,12 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
 
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user)
+
+
+class TeamsView(ListView):
+    model = Task  # TODO: change to Team model when created
+    template_name = 'activities/teams.html'
+    context_object_name = 'teams'
+
+    def get_queryset(self):
+        return Task.objects.all()  # TODO: change to Team.objects.all() when created
