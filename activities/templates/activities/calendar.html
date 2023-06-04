@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href={% static 'activities/css/style.css' %}>
+{% endblock %}
+
+{% block title %}Activities List{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        {% include 'activities/sidebar.html' %}
+        <div class="profile-content">
+            {% include 'activities/searchbar.html' %}
+            <div class="dashboard-container">
+                <div class="calendar">
+                    <h1>Calendar</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src={% static 'activities/js/profile.js' %}></script>
+{% endblock %}
+```
