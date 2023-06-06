@@ -14,7 +14,13 @@
             {% include 'activities/searchbar.html' %}
             <div class="dashboard-container">
                 <div class="team">
-                    <h1>Teams Detail View</h1>
+                    <h1>{{ team.name }}</h1>
+                    <p>{{ team.description }}</p>
+                    {% for member in team.members.all %}
+                        <div class="member">
+                            <p>{{ member.username }}</p>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
