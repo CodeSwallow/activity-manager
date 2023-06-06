@@ -26,3 +26,13 @@ class SubTask(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Team(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='teams')
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
