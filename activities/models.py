@@ -34,5 +34,8 @@ class Team(models.Model):
     members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='teams')
     created = models.DateTimeField(auto_now_add=True)
 
+    def get_absolute_url(self):
+        return reverse('activities:team_detail', kwargs={'pk': self.pk})
+
     def __str__(self):
         return self.name

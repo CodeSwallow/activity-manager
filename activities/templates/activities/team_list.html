@@ -13,9 +13,13 @@
         <div class="profile-content">
             {% include 'activities/searchbar.html' %}
             <div class="dashboard-container">
+                {% for team in teams %}
                 <div class="team">
-                    <h1>Teams List View</h1>
+                    <h1>{{ team.name }}</h1>
+                    <p>{{ team.description }}</p>
+                    <a href="{{ team.get_absolute_url }}">View Team</a>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>

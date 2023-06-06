@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from activities.models import Task
+from activities.models import Task, Team
 
 
 class HomeView(View):
@@ -52,21 +52,21 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
 
 
 class TeamListView(ListView):
-    model = Task  # TODO: change to Team model when created
+    model = Team
     template_name = 'activities/team_list.html'
     context_object_name = 'teams'
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user)  # TODO: change to Team.objects.filter() when created
+        return Team.objects.filter(members=self.request.user)
 
 
 class TeamDetailView(DetailView):
-    model = Task  # TODO: change to Team model when created
+    model = Team
     template_name = 'activities/team_detail.html'
     context_object_name = 'team'
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user)  # TODO: change to Team.objects.filter() when created
+        return Team.objects.filter(members=self.request.user)
 
 
 class CalendarView(View):  # TODO: currently a placeholder, will be implemented later
