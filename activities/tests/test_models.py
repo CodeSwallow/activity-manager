@@ -60,3 +60,20 @@ class SubTaskModelTests(TestCase):
     def test_object_name_is_title(self):
         subtask = create_subtask(task=self.task)
         self.assertEqual(str(subtask), subtask.title)
+
+
+class TeamModelTests(TestCase):
+    """
+    Test the Team model.
+    """
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = create_user()
+
+    def test_get_absolute_url(self):
+        team = create_team(created_by=self.user)
+        self.assertEqual(team.get_absolute_url(), f'/team-detail/{team.id}/')
+
+    def test_object_name_is_name(self):
+        team = create_team(created_by=self.user)
+        self.assertEqual(str(team), team.name)
