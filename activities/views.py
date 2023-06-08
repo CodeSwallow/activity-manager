@@ -25,7 +25,7 @@ class ProfileView(LoginRequiredMixin, View):
 class CreateTaskView(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'activities/create_task.html'
-    fields = ['title', 'description']
+    fields = ['title', 'description', 'team', 'users']
     success_url = '/accounts/profile/'
 
     def form_valid(self, form):
