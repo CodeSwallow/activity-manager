@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
@@ -26,7 +27,7 @@ class CreateTaskView(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'activities/create_task.html'
     fields = ['title', 'description', 'team', 'users']
-    success_url = '/accounts/profile/'
+    success_url = reverse_lazy('activities:profile')
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
@@ -67,6 +68,17 @@ class TeamDetailView(DetailView):
 
     def get_queryset(self):
         return Team.objects.filter(members=self.request.user)
+
+
+class CreateTeamView(LoginRequiredMixin, CreateView):
+    model = Team
+    template_name = 'activities/create_team.html'
+    fields = ['name', 'description', 'members']
+    success_url = reverse_lazy('activities:team_list')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
 
 class CalendarView(View):  # TODO: currently a placeholder, will be implemented later

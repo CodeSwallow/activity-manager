@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href={% static 'activities/css/style.css' %}>
+{% endblock %}
+
+{% block title %}Create Team{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        {% include 'activities/sidebar.html' %}
+        <div class="profile-content">
+            {% include 'activities/searchbar.html' %}
+            <h1>Create Team</h1>
+            <form method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src={% static 'activities/js/profile.js' %}></script>
+{% endblock %}
+```
