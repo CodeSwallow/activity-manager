@@ -20,8 +20,6 @@ def create_task(title='Task', description='Task description', created_by=None, t
     """Create and return a new task."""
     if created_by is None:
         created_by = create_user()
-    if team is None:
-        team = create_team()
     return Task.objects.create(title=title, description=description, created_by=created_by, team=team)
 
 
@@ -48,3 +46,17 @@ class TaskModelTests(TestCase):
     def test_object_name_is_title(self):
         task = create_task(created_by=self.user, team=self.team)
         self.assertEqual(str(task), task.title)
+
+
+class SubTaskModelTests(TestCase):
+    """
+    Test the SubTask model.
+    """
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = create_user()
+        cls.task = create_task(created_by=cls.user)
+
+    def test_object_name_is_title(self):
+        subtask = create_subtask(task=self.task)
+        self.assertEqual(str(subtask), subtask.title)
