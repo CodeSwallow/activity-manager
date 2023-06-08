@@ -7,8 +7,7 @@ class Task(models.Model):
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='created_tasks',
-        null=True, blank=True
+        related_name='created_tasks'
     )
     team = models.ForeignKey('Team', on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
     users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='tasks')
@@ -36,6 +35,11 @@ class SubTask(models.Model):
 
 
 class Team(models.Model):
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='created_teams'
+    )
     name = models.CharField(max_length=200)
     description = models.TextField()
     members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='teams')
