@@ -4,7 +4,9 @@ from django.shortcuts import reverse
 
 
 class Task(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='tasks')
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='created_tasks', null=True, blank=True)
+    team = models.ForeignKey('Team', on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='tasks')
     title = models.CharField(max_length=200)
     description = models.TextField()
     completed = models.BooleanField(default=False)

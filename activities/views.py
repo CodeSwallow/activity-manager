@@ -18,7 +18,7 @@ class ProfileView(LoginRequiredMixin, View):
     template_name = 'activities/profile.html'
 
     def get(self, request):
-        tasks = Task.objects.filter(user=request.user)
+        tasks = Task.objects.filter(created_by=request.user)
         return render(request, self.template_name, {'tasks': tasks})
 
 
@@ -29,7 +29,7 @@ class CreateTaskView(LoginRequiredMixin, CreateView):
     success_url = '/accounts/profile/'
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.created_by = self.request.user
         return super().form_valid(form)
 
 
@@ -39,7 +39,7 @@ class TaskListView(LoginRequiredMixin, ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user)
+        return Task.objects.filter(created_by=self.request.user)
 
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
@@ -48,7 +48,7 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'task'
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user)
+        return Task.objects.filter(created_by=self.request.user)
 
 
 class TeamListView(ListView):
