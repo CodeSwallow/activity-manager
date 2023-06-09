@@ -56,6 +56,24 @@ class ProfileViewTests(TestCase):
         self.client.force_login(user)
         response = self.client.get(reverse('activities:profile'))
 
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'activities/profile.html')
+
+    def test_logged_in_uses_correct_context(self):
+        user = create_user()
+        self.client.force_login(user)
+        response = self.client.get(reverse('activities:profile'))
+
         self.assertEqual(str(response.context['user']), 'user')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'activities/profile.html')
+        self.assertEqual(response.context['user'].username, 'user')
+
+    def test_tasks_in_context(self):
+        user = create_user()
+        self.client.force_login(user)
+        response = self.client.get(reverse('activities:profile'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'activities/profile.html')
+        self.assertEqual(response.context['tasks'].count(), 0)
