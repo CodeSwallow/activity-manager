@@ -29,9 +29,9 @@ jobs:
     - name: Run Tests
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        ALLOWED_HOSTS: ${{ env.ALLOWED_HOSTS }}
-        DEBUG: ${{ env.DEBUG }}
-        USE_S3: ${{ env.USE_S3 }}
+        ALLOWED_HOSTS: ${{ vars.ALLOWED_HOSTS }}
+        DEBUG: ${{ vars.DEBUG }}
+        USE_S3: ${{ vars.USE_S3 }}
       run: |
         echo
         python manage.py test
