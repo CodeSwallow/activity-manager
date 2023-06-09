@@ -14,7 +14,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.9, 3.11]
+        python-version: ["3.9", "3.10", "3.11"]
 
     steps:
     - uses: actions/checkout@v3
@@ -33,5 +33,4 @@ jobs:
         DEBUG: ${{ vars.DEBUG }}
         USE_S3: ${{ vars.USE_S3 }}
       run: |
-        echo
         python manage.py test
