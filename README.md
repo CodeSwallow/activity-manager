@@ -1,0 +1,1 @@
+# Activity Manager App using Django
