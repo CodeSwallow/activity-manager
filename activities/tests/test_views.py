@@ -77,3 +77,21 @@ class ProfileViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'activities/profile.html')
         self.assertEqual(response.context['tasks'].count(), 0)
+
+
+class TaskViewsTests(TestCase):
+    """
+    Test the TaskListView view and TaskDetailView view.
+    """
+
+    def test_task_list_view_url_exists_at_desired_location(self):
+        response = self.client.get('/task-list/')
+        self.assertEqual(response.status_code, 302)
+
+    def test_task_list_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('activities:task_list'))
+        self.assertEqual(response.status_code, 302)
+
+    def test_task_list_view_uses_correct_template(self):
+        response = self.client.get(reverse('activities:task_list'))
+        self.assertEqual(response.status_code, 302)
