@@ -17,16 +17,7 @@
                     <h1 class="section-heading">Tasks</h1>
                     {% for task in tasks %}
                         <a href="{{ task.get_absolute_url }}">
-                            <div class="task-card">
-                                {% if task.completed %}
-                                    <div class="task-progress" style="border-color: var(--green-700);">
-                                        <i class="fa-solid fa-check" style="color: var(--green-700);"></i>
-                                    </div>
-                                {% else %}
-                                    <div class="task-progress" style="border-color: var(--red-700);">
-                                        <i class="fa-solid fa-x" style="color: var(--red-700);"></i>
-                                    </div>
-                                {% endif %}
+                            <div class="task-card {% if task.completed %}completed{% endif %}">
                                 <div class="task-title">
                                     <span>{{ task.title }}</span>
                                 </div>

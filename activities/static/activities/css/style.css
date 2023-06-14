@@ -567,9 +567,16 @@ footer {
     gap: 0.8rem;
     padding: 1rem;
     border-radius: 0.5rem;
+    border-left-style: solid;
+    border-left-color: var(--red-500);
+    border-left-width: 0.5rem;
     background-color: var(--gray-100);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     transition: .2s ease;
+}
+
+.task-card.completed {
+    border-left-color: var(--green-500);
 }
 
 .task-card:hover {
