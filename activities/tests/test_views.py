@@ -132,3 +132,26 @@ class TaskListViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'activities/task_list.html')
         self.assertEqual(response.context['tasks'].count(), 1)
+
+
+class TaskDetailViewTests(TestCase):
+    """
+    Test the TaskDetailView view.
+    """
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = create_user()
+        cls.task = create_task(title='Task', description='Task description', created_by=cls.user)
+
+    def test_task_detail_view_url_exists_at_desired_location(self):
+        response = self.client.get('/task-detail/1/')
+        self.assertEqual(response.status_code, 302)
+
+    def test_task_detail_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('activities:task_detail', args=[self.task.id]))
+        self.assertEqual(response.status_code, 302)
+
+    def test_redirect_if_not_logged_in(self):
+        response = self.client.get(reverse('activities:task_detail', args=[self.task.id]))
+        self.assertRedirects(response, '/accounts/login/?next=/task-detail/1/')
