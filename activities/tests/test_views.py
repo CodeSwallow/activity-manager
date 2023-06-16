@@ -155,3 +155,28 @@ class TaskDetailViewTests(TestCase):
     def test_redirect_if_not_logged_in(self):
         response = self.client.get(reverse('activities:task_detail', args=[self.task.id]))
         self.assertRedirects(response, '/accounts/login/?next=/task-detail/1/')
+
+    def test_logged_in_uses_correct_template(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('activities:task_detail', args=[self.task.id]))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'activities/task_detail.html')
+
+    def test_logged_in_uses_correct_task_context(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('activities:task_detail', args=[self.task.id]))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'activities/task_detail.html')
+        self.assertEqual(response.context['task'].title, 'Task')
+        self.assertEqual(response.context['task'].description, 'Task description')
+
+    def test_logged_in_user_sees_only_his_tasks(self):
+        other_user = create_user(username='other_user')
+        other_task = create_task(title='Task', description='Task description', created_by=other_user)
+
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('activities:task_detail', args=[other_task.id]))
+
+        self.assertEqual(response.status_code, 404)
