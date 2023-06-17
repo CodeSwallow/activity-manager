@@ -180,3 +180,25 @@ class TaskDetailViewTests(TestCase):
         response = self.client.get(reverse('activities:task_detail', args=[other_task.id]))
 
         self.assertEqual(response.status_code, 404)
+
+
+class TaskCreateViewTests(TestCase):
+    """
+    Test the TaskCreateView view.
+    """
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = create_user()
+
+    def test_task_create_view_url_exists_at_desired_location(self):
+        response = self.client.get('/create-task/')
+        self.assertEqual(response.status_code, 302)
+
+    def test_task_create_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('activities:create_task'))
+        self.assertEqual(response.status_code, 302)
+
+    def test_redirect_if_not_logged_in(self):
+        response = self.client.get(reverse('activities:create_task'))
+        self.assertRedirects(response, '/accounts/login/?next=/create-task/')
