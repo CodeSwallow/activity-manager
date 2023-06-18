@@ -202,3 +202,24 @@ class TaskCreateViewTests(TestCase):
     def test_redirect_if_not_logged_in(self):
         response = self.client.get(reverse('activities:create_task'))
         self.assertRedirects(response, '/accounts/login/?next=/create-task/')
+
+    def test_logged_in_uses_correct_template(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('activities:create_task'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'activities/create_task.html')
+
+    def test_logged_in_user_can_create_task(self):
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('activities:create_task'), data={
+            'title': 'Task',
+            'description': 'Task description'
+        })
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Task.objects.count(), 1)
+        self.assertEqual(Task.objects.first().title, 'Task')
+        self.assertEqual(Task.objects.first().description, 'Task description')
+        self.assertEqual(Task.objects.first().created_by, self.user)
+
