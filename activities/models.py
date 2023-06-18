@@ -10,7 +10,7 @@ class Task(models.Model):
         related_name='created_tasks'
     )
     team = models.ForeignKey('Team', on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
-    users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='tasks')
+    users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='tasks', blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
     completed = models.BooleanField(default=False)
